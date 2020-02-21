@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-__title__ = 'DictTools'
+__title__ = 'SingletonUtils'
 __author__ = 'Jeffmxh'
                    _ooOoo_
                   o8888888o
@@ -25,14 +25,11 @@ __author__ = 'Jeffmxh'
             佛祖保佑       永无BUG
 """
 
-from hashlib import md5
-
-class CommonUtils:
-    @staticmethod
-    def get_md5(text):
-        """
-        计算字符串md5值
-        :param string: 输入字符串
-        :return: 字符串md5
-        """
-        return md5(text.encode()).hexdigest()
+def singleton(cls):
+    '''用于让类保持单例模式'''
+    instances = {}
+    def _singleton(*args, **kargs):
+        if cls not in instances:
+            instances[cls] = cls(*args, **kargs)
+        return instances[cls]
+    return _singleton

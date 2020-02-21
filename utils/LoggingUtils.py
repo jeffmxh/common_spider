@@ -28,13 +28,7 @@ __author__ = 'Jeffmxh'
 import logging
 import os
 
-def singleton(cls):
-    instances = {}
-    def _singleton(*args, **kargs):
-        if cls not in instances:
-            instances[cls] = cls(*args, **kargs)
-        return instances[cls]
-    return _singleton
+from spider.utils.SingletonUtils import singleton
 
 '''
 设定日志文件格式
